@@ -1,14 +1,11 @@
-const array = [-1, 2, -5, 8, 16];
-  
-let max = array[0];
-let min = array[0];
-for ( let i = 0; i < array.length; i++) {
-  if (array[i] > max) {
-     max = array[i]; 
+function max(numbers) {
+  let max = numbers[0];
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] > max) {
+      max = numbers[i];
     }
-  if (array[i] < min) { 
-        min = array[i]; 
-    }
+  }
+  return max;
 }
-console.log("max = " + max);
-console.log("min = " + min);
+console.log(max([1, 2, 4, 5]));
+console.log(max([5, 2, 7, 1, 6]));

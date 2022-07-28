@@ -1,10 +1,10 @@
 function calculate(data) {
-    let total=0;
-    for ( let i = 0 ; i < data.products.length; i++){
-        total += data.products[i].price 
-        //total += data.products[i].price * data.discount; ＊優先權太高
-    }
-    return total * data.discount;
+  let total = 0;
+  for (let i = 0; i < data.products.length; i++) {
+    total += data.products[i].price;
+    //total += data.products[i].price * data.discount; ＊優先權太高
+  }
+  return total * (1 - data.discount);
 }
 
 const discountedPrice = calculate({
@@ -12,17 +12,17 @@ const discountedPrice = calculate({
   products: [
     {
       name: "Product1",
-      price:100
+      price: 100,
     },
     {
-       name: "Product2",
-       price:700
+      name: "Product2",
+      price: 700,
     },
     {
-        name: "Product3",
-        price:250
-     }
-  ]
+      name: "Product3",
+      price: 250,
+    },
+  ],
 });
 
 console.log(discountedPrice);
