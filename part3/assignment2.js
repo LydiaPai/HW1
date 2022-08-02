@@ -1,5 +1,5 @@
-let mobileMenu = document.querySelector(".mobile-menu");
-let sidebar = document.querySelector(".side_desktop-menu");
+const mobileMenu = document.querySelector(".mobile-menu");
+const sidebar = document.querySelector(".side_desktop-menu");
 
 mobileMenu.addEventListener("click", () => {
   sidebar.style.display = "block";

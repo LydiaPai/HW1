@@ -1,11 +1,21 @@
-function ajax(data_url, callback) {
-  fetch(data_url)
+function ajax(_url) {
+  return fetch(_url)
+    .then(Status)
     .then((response) => response.json())
-    .then((data) => callback(data));
+    .catch((error) => console.log("error is : ", error));
+}
+
+function Status(res) {
+  if (res.ok) {
+    return Promise.resolve(res);
+  } else {
+    return Promise.reject(new Error(res.statusText));
+  }
 }
 
 function render(data) {
   let result = document.querySelector("#result");
+  // result.innerHTML = data; 不能寫在這因為會先印出三個Object
   for (let i = 0; i < data.length; i++) {
     let products = data[i];
     result.innerHTML +=
@@ -16,12 +26,11 @@ function render(data) {
       "," +
       products.description +
       "</div>";
+    console.log(result);
   }
 }
 
-ajax(
-  "https://appworks-school.github.io/Remote-Assignment-Data/products",
-  function (response) {
-    render(response);
-  }
+ajax("https://appworks-school.github.io/Remote-Assignment-Data/products").then(
+  (data) => render(data)
 );
+// );

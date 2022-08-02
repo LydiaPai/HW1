@@ -112,7 +112,7 @@ h2 {
 .side_desktop-menu {
   display: flex;
   float: right;
-  position: absolute;
+  position: fixed;
   flex-direction: column;
   top: 0;
   right: 0;
