@@ -17,13 +17,18 @@
       let btn = document.getElementsByClassName("button");
       //console.log(btn);
       let input = document.querySelector("#testInput");
-      console.log(input.value);
+      // console.log(input.value);
       let p = document.querySelector("p");
+
       function get_num() {
         fetch(`http://localhost:3000/getData?number=${input.value}`)
-          .then((respnse) => respnse.text())
-          .then((result) => (p.innerHTML = `${result}`));
+          .then((respnse) => respnse.json())
+          .then((result) => {
+            console.log(result);
+            p.innerHTML = `${result}`;
+          });
       }
+
       btn = addEventListener("click", get_num);
     </script>
   </body>

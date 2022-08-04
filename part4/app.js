@@ -10,7 +10,9 @@ app.use(express.static("static_file"));
 app.get("/getData", (req, res) => {
   let result;
   //part2
-  if (Object.keys(req.query).length === 0) {
+  // 新增空字串
+  if (req.query.length === 0 || req.query.number === "") {
+    // console.log("aaa");
     result = "Lack of Parameter";
   } else {
     if (isNaN(req.query.number)) {
@@ -19,6 +21,7 @@ app.get("/getData", (req, res) => {
       result = ((1 + Number(req.query.number)) * Number(req.query.number)) / 2; //轉成數字 再進行計算
     }
   }
-  res.send(`${result}`);
+
+  res.send(`"${result}"`); //  "Wrong Parameter" 傳進來只有Wrong Parameter 所以外面要加"""
 });
 app.listen(3000); //告訴server聽取3000這個Port
