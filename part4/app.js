@@ -9,11 +9,14 @@ app.use(express.static("static_file"));
 
 app.get("/getData", (req, res) => {
   let result;
+  // console.log(typeof req.query); 檢查出re
   //part2
   // 新增空字串
-  if (req.query.length === 0 || req.query.number === "") {
-    // console.log("aaa");
+  //req.query 是一個物件
+  if (Object.keys(req.query).length === 0 || req.query.number === "") {
+    // if (req.query.length === 0 || req.query.number === "") {
     result = "Lack of Parameter";
+    console.log(result);
   } else {
     if (isNaN(req.query.number)) {
       result = "Wrong Parameter";
