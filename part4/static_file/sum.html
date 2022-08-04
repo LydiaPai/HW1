@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sum</title>
+  </head>
+  <body>
+    <div id="demo">
+      <h2>Enter num</h2>
+      <input type="text" placeholder="test" id="testInput" />
+      <button type="button" class="button">submit</button>
+      <p></p>
+    </div>
+    <script>
+      let btn = document.getElementsByClassName("button");
+      //console.log(btn);
+      let input = document.querySelector("#testInput");
+      console.log(input.value);
+      let p = document.querySelector("p");
+      function get_num() {
+        fetch(`http://localhost:3000/getData?number=${input.value}`)
+          .then((respnse) => respnse.text())
+          .then((result) => (p.innerHTML = `${result}`));
+      }
+      btn = addEventListener("click", get_num);
+    </script>
+  </body>
+</html>
