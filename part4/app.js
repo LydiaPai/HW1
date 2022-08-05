@@ -9,7 +9,7 @@ app.use(express.static("static_file"));
 
 app.get("/getData", (req, res) => {
   let result;
-  // console.log(typeof req.query); 檢查出re
+  //console.log(typeof req.query); //req,query 是一個物件
   //part2
   // 新增空字串
   //req.query 是一個物件

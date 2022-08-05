@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <link rel="stylesheet" type="text/css" href="rwd-layout.css" />
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      
+       function Header() {
+        const hambergur_btn =() => {
+          const mobileMenu = document.querySelector(".mobile-menu");
+          const sidebar = document.querySelector(".side_desktop-menu");
+          mobileMenu.addEventListener("click", () => {
+          sidebar.style.display = "block";
+        });
+        }
+        return  (
+          <div className="frame">
+            <div className="'headline">Website/Logo</div>
+            <div className="desktop-menu">
+            <div className="item">item 1</div>
+            <div className="item">item 2</div>
+            <div className="item">item 3</div>
+          <div className="item">item 4</div>
+           </div>
+      <div className="mobile-menu" onClick={hambergur_btn}>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1024px-Hamburger_icon.svg.png"
+          width="30"
+          height="30"
+        />
+      </div>
+    </div>
+        );
+      }
+      
+      function Siderbar() {
+
+        const side_btn =() => {
+          const sidebar = document.querySelector(".side_desktop-menu");
+          document.querySelector(".btn_close").addEventListener("click", () => {
+          sidebar.style.display = "none";
+          }); }
+
+        return  (
+          <div className="sidebar">
+            <div className="side_desktop-menu" >
+              <div className="btn_close" onClick={side_btn}>
+                  <p >X</p>
+              </div>
+            <div className="item">item 1</div>
+            <div className="item">item 2</div>
+            <div className="item">item 3</div>
+            <div className="item">item 4</div>
+            </div>
+          </div>
+        );
+      }
+
+
+      function Welcome() {
+        const wel_btn =() => {const message = document.querySelector(".welcome"); //getElementsByClassName 不行
+        message.addEventListener("click", () => {
+        message.innerHTML = "<h1>Hello World!</h1>";
+        });}
+        
+       return  (
+          <div className="welcome" onClick={wel_btn}>
+              <div className="text">Welcome message</div>
+          </div>  
+        );
+      }
+
+      function Section() {
+        const context_btn =() => {
+          console.log(document.querySelector(".button-box"));
+document.querySelector(".button-box").addEventListener("click", () => {
+  document.querySelector(".list_2").style.visibility = "visible";
+});
+
+    }
+        return  (
+          <section>
+      <h2>Section Title</h2>
+      <div className="list">
+        <div className="product">Context Box 1</div>
+        <div className="product">Context Box 2</div>
+        <div className ="product">Context Box 3</div>
+        <div className="product">Context Box 4</div>
+      </div>
+
+      <div className="button-box">
+        <button onClick={context_btn}>call to action</button>
+      </div>
+      <div className="list_2">
+        <div className="product">Context Box 5</div>
+        <div className="product">Context Box 6</div>
+        <div className="product">Context Box 7</div>
+        <div className="product">Context Box 8</div>
+      </div>
+    </section>
+        );
+      }
+      function MyApp(){
+        return (
+          <div className="webpage">
+            <div className="nav"><Header /><Siderbar/></div>
+            <Welcome />
+          <Section/>
+          </div>
+        );
+      }
+
+      const container = document.getElementById('root');
+      const root = ReactDOM.createRoot(container);//建立真實的DOM
+      root.render(<MyApp />);
+
+
+    </script>
+</html
