@@ -111,6 +111,7 @@ h2 {
   font-weight: bold;
   text-align: center;
 }
+
 /* sidebar */
 .side_desktop-menu {
   display: flex;
@@ -134,7 +135,7 @@ h2 {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  visibility: hidden;
+  visibility: visible;
   max-width: 1200px;
 }
 
