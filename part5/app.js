@@ -16,13 +16,12 @@ function Welcome() {
 }
 
 function Header() {
-  const [icon, set_icon] = useState("mobile-menu");
-  const switch_menu = () => {
-    if (icon === "mobile-menu") {
-      set_icon("btn_close");
-    } else {
-      set_icon("mobile-menu");
-    }
+  const [icon, set_icon] = useState({ display: "none" });
+  const open_menu = () => {
+    set_icon({ display: "block" });
+  };
+  const close_menu = () => {
+    set_icon({ display: "none" });
   };
 
   return (
@@ -35,7 +34,7 @@ function Header() {
           <div className="item">item 3</div>
           <div className="item">item 4</div>
         </div>
-        <div className={icon} onClick={switch_menu}>
+        <div className="mobile-menu" onClick={open_menu}>
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1024px-Hamburger_icon.svg.png"
             width="30"
@@ -44,8 +43,8 @@ function Header() {
         </div>
       </div>
       <div className="sidebar">
-        <div className="side_desktop-menu">
-          <div className={icon} onClick={switch_menu}>
+        <div style={icon} className="side_desktop-menu">
+          <div className="btn_closel" onClick={close_menu}>
             <p>X</p>
           </div>
           <div className="item">item 1</div>
@@ -59,14 +58,11 @@ function Header() {
 }
 
 function Section() {
-  const [tag, set_tag] = React.useState("");
-  const show_box = () => {
-    if (tag === "") {
-      set_tag("list_2");
-    } else {
-      set_tag("");
-    }
-  };
+  const [tag, set_tag] = useState({ visibility: "hidden" });
+  function show_box() {
+    set_tag({ visibility: "visible" });
+  }
+
   return (
     <section>
       <h2>Section Title</h2>
@@ -81,7 +77,7 @@ function Section() {
         <button onClick={show_box}>call to action</button>
       </div>
 
-      <div className={tag}>
+      <div style={tag} className="list_2">
         <div className="product">Context Box 5</div>
         <div className="product">Context Box 6</div>
         <div className="product">Context Box 7</div>
